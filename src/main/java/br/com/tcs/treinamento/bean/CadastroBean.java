@@ -39,7 +39,6 @@ public class CadastroBean implements Serializable {
         pessoa.setIdade(cadastrarPessoa.getIdade());
         pessoa.setEmail(cadastrarPessoa.getEmail());
         pessoa.setData(cadastrarPessoa.getData());
-        pessoa.setDataCadastro(cadastrarPessoa.getDataCadastro());
         pessoa.setTipoDocumento(cadastrarPessoa.getTipoDocumento());
         pessoa.setNumeroCPF(cadastrarPessoa.getNumeroCPF());
         pessoa.setNumeroCNPJ(cadastrarPessoa.getNumeroCNPJ());
@@ -63,7 +62,6 @@ public class CadastroBean implements Serializable {
         cadastrarPessoa.setIdade(null);
         cadastrarPessoa.setEmail(null);
         cadastrarPessoa.setData(null);
-        cadastrarPessoa.setDataCadastro(null);
         cadastrarPessoa.setTipoDocumento(null);
         cadastrarPessoa.setNumeroCPF(null);
         cadastrarPessoa.setNumeroCNPJ(null);
@@ -84,9 +82,6 @@ public class CadastroBean implements Serializable {
         }
         if (cadastrarPessoa.getData() == null) {
             erros.add("Data de nascimento não informada.");
-        }
-        if(cadastrarPessoa.getDataCadastro() == null){
-            erros.add("Data de cadastro não informada.");
         }
         if (cadastrarPessoa.getTipoDocumento() == null || cadastrarPessoa.getTipoDocumento().trim().isEmpty()) {
             erros.add("Tipo de documento não informado.");

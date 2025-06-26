@@ -36,11 +36,6 @@
                         <f:convertDateTime pattern="dd/MM/yyyy" value="#{consultaPessoaBean.pessoaSelecionada.data}" />
                     </h:outputText>
 
-                    <p:outputLabel for="dataCadastro" value="Data de Cadastro:" />
-                    <h:outputText id="dataCadastro">
-                        <f:convertDateTime pattern="dd/MM/yyyy" value="#{consultaPessoaBean.pessoaSelecionada.dataCadastroa}" />
-                    </h:outputText>
-
                     <p:outputLabel for="tipo" value="Tipo de Documento:" />
                     <h:outputText id="tipo" value="#{consultaPessoaBean.pessoaSelecionada.tipoDocumento}" />
 

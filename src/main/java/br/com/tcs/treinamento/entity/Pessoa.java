@@ -31,10 +31,6 @@ public class Pessoa implements Serializable {
     @Temporal(TemporalType.DATE)
     private Date data;
 
-    // Data de cadastro (somente data, sem horário)
-    @Temporal(TemporalType.DATE)
-    private Date dataCadastro;
-
     // Indica se o documento é CPF ou CNPJ
     private String tipoDocumento;
 
@@ -59,13 +55,12 @@ public class Pessoa implements Serializable {
     }
 
     // Construtor completo (opcional para facilitar a criação)
-    public Pessoa(String nome, Integer idade, String email, Date data, Date dataCadastro, String tipoDocumento,
+    public Pessoa(String nome, Integer idade, String email, Date data, String tipoDocumento,
                   String numeroCPF, String numeroCNPJ, String motivoManutencao, Date dataManutencao, Boolean ativo) {
         this.nome = nome;
         this.idade = idade;
         this.email = email;
         this.data = data;
-        this.dataCadastro = dataCadastro;
         this.tipoDocumento = tipoDocumento;
         this.numeroCPF = numeroCPF;
         this.numeroCNPJ = numeroCNPJ;
@@ -75,10 +70,6 @@ public class Pessoa implements Serializable {
     }
 
     // Getters e Setters
-
-    public Date getDataCadastro() {return dataCadastro;}
-
-    public void setDataCadastro(Date dataCadastro) {this.dataCadastro = dataCadastro;}
 
     public Long getId() {
         return id;
@@ -193,7 +184,6 @@ public class Pessoa implements Serializable {
                 ", idade=" + idade +
                 ", email='" + email + '\'' +
                 ", data=" + data +
-                ", dataCadastro=" + dataCadastro +
                 ", tipoDocumento='" + tipoDocumento + '\'' +
                 ", numeroCPF='" + numeroCPF + '\'' +
                 ", numeroCNPJ='" + numeroCNPJ + '\'' +

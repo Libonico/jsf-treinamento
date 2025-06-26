@@ -1,59 +1,43 @@
 package br.com.tcs.treinamento.bean;
-import javax.faces.bean.ManagedBean;
-import java.util.ArrayList;
-import java.util.List;
 
-//ManagedBean (necessário para criação da Bean)
-@ManagedBean(name = "cadastrarProdutoBean")
-public class CadastrarProdutoBean {
+import jakarta.faces.view.ViewScoped;
+import javax.annotation.ManagedBean;
+import java.io.Serializable;
+import java.util.Date;
+
+@ManagedBean
+@ViewScoped
+public class CadastrarProdutoBean implements Serializable {
 
     private String nomeProduto;
     private String valorProduto;
     private String tipoProduto;
-    List<String> tipoProdutoOpcao;
+    private Date dataCadastroProduto;
 
-    //Construtor sem argumentos (necessário para criação Bean)
-    public CadastrarProdutoBean() {
-        tipoProdutoOpcao = new ArrayList<String>();
-
-        tipoProdutoOpcao.add("Alimentício");
-        tipoProdutoOpcao.add("Vestuário");
-        tipoProdutoOpcao.add("Utensílios");
-        tipoProdutoOpcao.add("Eletrônico");
-    }
-
-    //Getters e Setters
+    public CadastrarProdutoBean() {}
 
     public void limpar(){
-        setNomeProduto(null);
-        setValorProduto(null);
-        setTipoProduto(null);
+        this.nomeProduto = null;
+        this.valorProduto = null;
+        this.dataCadastroProduto = null;
+        this.tipoProduto = null;
     }
 
-    public void validarInfos(){
-        List<String>erros = new ArrayList<>();
-        if(getNomeProduto() == null || getNomeProduto().trim().isEmpty()){
-            erros.add("O nome do produto não pode ser nulo.");
-        }
-        if(getValorProduto() == null || getValorProduto().trim().isEmpty()){
-            erros.add("O valor do protuto não pode ser nulo.");
-        }
-        if(getTipoProduto() == null || getValorProduto().trim().isEmpty()){
-            erros.add("O tipo do produto não pode ser nulo.");
-        }
-    }
+    public String getNomeProduto() {return nomeProduto;}
 
-    public List<String> getTipoProdutoOpcao() {return tipoProdutoOpcao;}
+    public void setNomeProduto(String nomeProduto) {this.nomeProduto = nomeProduto;}
+
+    public String getValorProduto() {return valorProduto;}
+
+    public void setValorProduto(String valorProduto) {this.valorProduto = valorProduto;}
 
     public String getTipoProduto() {return tipoProduto;}
 
     public void setTipoProduto(String tipoProduto) {this.tipoProduto = tipoProduto;}
 
-    public String getNomeProduto() {return nomeProduto;}
+    public Date getDataCadastroProduto() {return dataCadastroProduto;}
 
-    public void setNomeProduto(String produto) {this.nomeProduto = produto;}
+    public void setDataCadastroProduto(Date dataCadastroProduto) {this.dataCadastroProduto = dataCadastroProduto;}
 
-    public String getValorProduto() {return valorProduto;}
 
-    public void setValorProduto(String valor) {this.valorProduto = valor;}
 }
