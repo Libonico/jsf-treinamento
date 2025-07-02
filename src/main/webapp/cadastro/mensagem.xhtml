@@ -1,0 +1,53 @@
+<ui:composition template="/WEB-INF/templates/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title">
+        Incluir Mensagem
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form id="formMensagem">
+            <p:commandButton value="Incluir Mensagem"
+                             icon="pi pi-plus"
+                             oncomplete="PF('mensagemDialog').show();"
+                             process="@this"
+                             update="@none" />
+
+            <!-- Modal -->
+            <p:dialog header="Nova Mensagem"
+                      widgetVar="mensagemDialog"
+                      modal="true"
+                      closable="true"
+                      resizable="false"
+                      draggable="false"
+                      width="400">
+                <h:panelGrid columns="1" cellpadding="5">
+                    <p:outputLabel for="mensagemText" value="Digite sua mensagem:" />
+                    <p:inputTextarea id="mensagemText"
+                                     value="#{mensagemBean.mensagemDigitada}"
+                                     rows="4" cols="50"
+                                     autoResize="false" required="true"
+                                     requiredMessage="A mensagem é obrigatória" />
+
+                    <p:messages showDetail="true" />
+                </h:panelGrid>
+
+                <f:facet name="footer">
+                    <p:commandButton value="Salvar"
+                                     icon="pi pi-check"
+                                     action="#{mensagemBean.salvarMensagem}"
+                                     process="mensagemText"
+                                     ajax="false" /> <!-- necessário para redirecionar -->
+                </f:facet>
+            </p:dialog>
+        </h:form>
+    </ui:define>
+
+    <ui:define name="footer">
+        Rodapé – Incluir Mensagem
+    </ui:define>
+</ui:composition>

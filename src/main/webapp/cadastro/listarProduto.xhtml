@@ -1,0 +1,51 @@
+<ui:composition template="/WEB-INF/templates/template.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:define name="title">
+        Lista de Produtos
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form id="formLista">
+            <p:panel header="Produtos Cadastrados">
+                <p:messages showDetail="true" closable="true" />
+
+                <p:dataTable value="#{CadastrarProdutoBean.produtos}" var="p"
+                             paginator="true" rows="10" style="width:100%">
+                    <p:column headerText="ID">
+                        #{p.id}
+                    </p:column>
+                    <p:column headerText="Nome">
+                        #{p.nomeProduto}
+                    </p:column>
+                    <p:column headerText="Data de Cadastro">
+                        <h:outputText value="#{p.dataCadastro}">
+                            <f:convertDateTime pattern="dd/MM/yyyy" />
+                        </h:outputText>
+                    </p:column>
+                    <p:column headerText="Ações">
+                        <p:commandButton value="Remover"
+                                         action="#{CadastrarProdutoBean.removerProduto(p)}"
+                                         update="@form"
+                                         icon="pi pi-trash"
+                                         styleClass="ui-button-danger" />
+                    </p:column>
+                </p:dataTable>
+
+                <p:spacer height="10" />
+
+                <p:commandButton value="Voltar ao Cadastro"
+                                 action="cadastrarProduto.xhtml?faces-redirect=true"
+                                 icon="pi pi-arrow-left" />
+            </p:panel>
+        </h:form>
+    </ui:define>
+
+    <ui:define name="footer">
+        Rodapé – Listagem de Produtos
+    </ui:define>
+</ui:composition>

@@ -1,0 +1,26 @@
+<ui:composition template="/WEB-INF/templates/template.xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:define name="title">
+        Mensagem Salva
+    </ui:define>
+
+    <ui:define name="content">
+        <p:panel header="Mensagem Cadastrada" style="width:400px;">
+            <h:outputText value="#{flash.mensagem}" escape="false" />
+        </p:panel>
+
+        <p:spacer height="10" />
+        <h:form>
+            <p:commandButton value="Voltar"
+                             action="mensagem.xhtml?faces-redirect=true"
+                             icon="pi pi-arrow-left" />
+        </h:form>
+    </ui:define>
+
+    <ui:define name="footer">
+        Rodapé – Mensagem
+    </ui:define>
+</ui:composition>
